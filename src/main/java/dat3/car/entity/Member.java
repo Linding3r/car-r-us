@@ -31,6 +31,8 @@ public class Member {
     private String zip;
     private boolean approved;
     private int ranking;
+
+    //Just stuff from week 1 to show different annotations
     @CreationTimestamp
     private LocalDateTime created;
     @UpdateTimestamp

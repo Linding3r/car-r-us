@@ -5,10 +5,10 @@ import dat3.car.dto.MemberResponse;
 import dat3.car.entity.Member;
 import dat3.car.repository.MemberRepository;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -38,4 +38,34 @@ public class MemberService {
         return new MemberResponse(member, false);
     }
 
+    public MemberResponse getMemberById(String username) {
+        Member member = memberRepository.findById(username).orElseThrow(() ->
+                new ResponseStatusException(HttpStatus.NOT_FOUND, "Member not found"));
+        return new MemberResponse(member, false);
+    }
+
+    public void deleteMemberByUsername(String username) {
+        memberRepository.deleteById(username);
+    }
+
+    public void setRankingForUser(String username, int value) {
+        Member member = memberRepository.findById(username).orElseThrow(() ->
+                new ResponseStatusException(HttpStatus.NOT_FOUND, "Member not found"));
+        member.setRanking(value);
+        memberRepository.save(member);
+    }
+
+    public ResponseEntity<Boolean> editMember(MemberRequest body, String username) {
+        Member member = memberRepository.findById(username).orElseThrow(() ->
+                new ResponseStatusException(HttpStatus.NOT_FOUND, "Member not found"));
+        member.setEmail(body.getEmail());
+        member.setFirstName(body.getFirstName());
+        member.setLastName(body.getLastName());
+        member.setStreet(body.getStreet());
+        member.setZip(body.getZip());
+        member.setCity(body.getCity());
+
+        memberRepository.save(member);
+        return new ResponseEntity(HttpStatus.OK);
+    }
 }

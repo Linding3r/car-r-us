@@ -23,11 +23,15 @@ class MemberController {
 
     //ADMIN ONLY
     @GetMapping
-    List<MemberResponse> getMembers(){ return memberService.getMembers(false);}
+    List<MemberResponse> getMembers(){
+        return memberService.getMembers(false);
+    }
 
     //ADMIN
     @GetMapping(path = "/{username}")
-    MemberResponse getMemberById(@PathVariable String username) throws Exception {return null;}
+    MemberResponse getMemberById(@PathVariable String username) throws Exception {
+        return memberService.getMemberById(username);
+    }
 
     //ANONYMOUS
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -38,18 +42,18 @@ class MemberController {
     //MEMBER
     @PutMapping("/{username}")
     ResponseEntity<Boolean> editMember(@RequestBody MemberRequest body, @PathVariable String username){
-        return null;
+        return memberService.editMember(body, username);
     }
 
     //ADMIN
     @PatchMapping("/ranking/{username}/{value}")
-    void setRankingForUser(@PathVariable String username, @PathVariable int value) {}
+    void setRankingForUser(@PathVariable String username, @PathVariable int value) {
+        memberService.setRankingForUser(username, value);
+    }
 
     //ADMIN
     @DeleteMapping("/{username}")
-    void deleteMemberByUsername(@PathVariable String username) {}
-
-
-
-
+    void deleteMemberByUsername(@PathVariable String username) {
+        memberService.deleteMemberByUsername(username);
+    }
 }

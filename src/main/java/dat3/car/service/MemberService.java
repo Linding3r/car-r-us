@@ -68,4 +68,10 @@ public class MemberService {
         memberRepository.save(member);
         return new ResponseEntity(HttpStatus.OK);
     }
+
+    public MemberResponse findMemberByUsername(String m1) {
+        Member member = memberRepository.findById(m1).orElseThrow(() ->
+                new ResponseStatusException(HttpStatus.NOT_FOUND, "Member not found"));
+        return new MemberResponse(member, false);
+    }
 }

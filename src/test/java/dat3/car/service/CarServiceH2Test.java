@@ -41,8 +41,4 @@ class CarServiceH2Test {
     }
 
 
-    @Test
-    void addCar() {
-    }
-
 }

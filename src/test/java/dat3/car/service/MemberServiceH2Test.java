@@ -42,7 +42,4 @@ class MemberServiceH2Test {
         assertNotNull(members.get(0).getCreated());
     }
 
-    @Test
-    void addMember() {
-    }
 }

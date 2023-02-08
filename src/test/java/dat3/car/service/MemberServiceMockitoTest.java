@@ -67,8 +67,8 @@ class MemberServiceMockitoTest {
         m1.setCreated(LocalDateTime.now());
         Mockito.when(memberRepository.findById("m1")).thenReturn(java.util.Optional.of(m1));
 
-        //MemberResponse response = memberService.findMemberByUsername("m1");
-        //assertEquals("m1@a.dk",response.getEmail());
+        MemberResponse response = memberService.findMemberByUsername("m1");
+        assertEquals("m1@a.dk",response.getEmail());
 
     }
 

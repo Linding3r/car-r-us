@@ -42,4 +42,11 @@ class MemberServiceH2Test {
         assertNotNull(members.get(0).getCreated());
     }
 
+    @Test
+    void setRankingForUser() {
+        memberService.setRankingForUser("m1", 1);
+        Member member = memberRepository.findById("m1").get();
+        assertEquals(1, member.getRanking());
+    }
+
 }

@@ -40,5 +40,4 @@ class CarServiceH2Test {
         assertNotNull(carResponses.get(0).getCreated());
     }
 
-
 }

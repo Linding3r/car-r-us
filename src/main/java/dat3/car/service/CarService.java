@@ -22,7 +22,9 @@ public class CarService {
 
 
     public void deleteCarById(int carId) {
-        carRepository.deleteById(carId);
+        Car car = carRepository.findById(carId).orElseThrow(() ->
+                new ResponseStatusException(HttpStatus.NOT_FOUND, "Car not found"));
+        carRepository.delete(car);
     }
 
     public CarResponse addCar(CarRequest body) {

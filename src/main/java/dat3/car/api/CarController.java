@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController
 @RequestMapping("api/cars")
-public class CarController {
+class CarController {
 
     CarService carService;
 
@@ -26,7 +26,7 @@ public class CarController {
 
     //MEMBER
     @GetMapping(path = "/{carId}")
-    CarResponse getCarById(@PathVariable int carId) throws Exception {
+    CarResponse getCarById(@PathVariable int carId)  {
         return carService.getCarById(carId);
     }
 

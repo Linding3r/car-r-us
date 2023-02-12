@@ -22,6 +22,7 @@ public class CarService {
 
 
     public void deleteCarById(int carId) {
+        carRepository.deleteById(carId);
     }
 
     public CarResponse addCar(CarRequest body) {

@@ -66,7 +66,7 @@ public class MemberService {
         member.setCity(body.getCity());
 
         memberRepository.save(member);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     public MemberResponse findMemberByUsername(String m1) {

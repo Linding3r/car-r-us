@@ -39,6 +39,4 @@ class CarServiceH2Test {
         assertEquals(2, carResponses.size());
         assertNotNull(carResponses.get(0).getCreated());
     }
-
-
 }

@@ -21,10 +21,10 @@ public class MemberResponse {
     String street;
     String city;
     String zip;
-    @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss",shape = JsonFormat.Shape.STRING)
+    @JsonFormat(pattern = "dd-MM-yyyy",shape = JsonFormat.Shape.STRING)
     LocalDateTime created;
 
-    @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss",shape = JsonFormat.Shape.STRING)
+    @JsonFormat(pattern = "dd-MM-yyyy",shape = JsonFormat.Shape.STRING)
     LocalDateTime edited;
     Integer ranking;
     Boolean approved;
@@ -44,6 +44,23 @@ public class MemberResponse {
             this.approved = m.isApproved();
             this.ranking = m.getRanking();
         }
+    }
+
+    @Override
+    public String toString() {
+        return "MemberResponse{" +
+                "username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", street='" + street + '\'' +
+                ", city='" + city + '\'' +
+                ", zip='" + zip + '\'' +
+                ", created=" + created +
+                ", edited=" + edited +
+                ", ranking=" + ranking +
+                ", approved=" + approved +
+                '}';
     }
 }
 

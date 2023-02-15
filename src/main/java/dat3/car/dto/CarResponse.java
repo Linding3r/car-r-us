@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -19,11 +19,11 @@ public class CarResponse {
     String model;
     double pricePrDay;
     double bestDiscount;
-    @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss",shape = JsonFormat.Shape.STRING)
-    LocalDateTime created;
+    @JsonFormat(pattern = "dd-MM-yyyy",shape = JsonFormat.Shape.STRING)
+    LocalDate created;
 
-    @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss",shape = JsonFormat.Shape.STRING)
-    LocalDateTime edited;
+    @JsonFormat(pattern = "dd-MM-yyyy",shape = JsonFormat.Shape.STRING)
+    LocalDate edited;
 
     //convert Car Entity to Car DTO
     public CarResponse(Car c, boolean includeAll) {

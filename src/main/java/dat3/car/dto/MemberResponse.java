@@ -45,22 +45,5 @@ public class MemberResponse {
             this.ranking = m.getRanking();
         }
     }
-
-    @Override
-    public String toString() {
-        return "MemberResponse{" +
-                "username='" + username + '\'' +
-                ", email='" + email + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", street='" + street + '\'' +
-                ", city='" + city + '\'' +
-                ", zip='" + zip + '\'' +
-                ", created=" + created +
-                ", edited=" + edited +
-                ", ranking=" + ranking +
-                ", approved=" + approved +
-                '}';
-    }
 }
 

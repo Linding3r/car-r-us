@@ -2,7 +2,6 @@ package dat3.car.config;
 
 import dat3.car.entity.Car;
 import dat3.car.entity.Member;
-import dat3.car.entity.Reservation;
 import dat3.car.repository.CarRepository;
 import dat3.car.repository.MemberRepository;
 import dat3.car.repository.ReservationRepository;
@@ -12,17 +11,14 @@ import dat3.security.repository.UserWithRolesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Controller;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @Controller
-@EnableJpaRepositories(basePackages = {"dat3.security.repository", "dat3.car.repository"})
 public class DeveloperData implements ApplicationRunner {
 
     @Autowired
@@ -37,9 +33,10 @@ public class DeveloperData implements ApplicationRunner {
     final String passwordUsedByAll = "test12";
 
     void testdata(){
-        Member m1 = new Member("member1", "4321", "memb1@a.dk", "Kurt", "Wonnegut", "Lyngbyvej 2", "Lyngby", "2800");
-        Member m2 = new Member("member2","4321", "aaa@dd.dk", "Hanne", "Wonnegut", "Lyngbyvej 2", "Lyngby", "2800");
-        //Just for week one to show different data we can handle with annotations
+        Member m1 = new Member("member1", "4321", "memb1@a.dk", "Kurt", "Wonnegut",
+                "Lyngbyvej 2", "Lyngby", "2800");
+        Member m2 = new Member("member2","4321", "aaa@dd.dk", "Hanne", "Wonnegut",
+                "Lyngbyvej 2", "Lyngby", "2800");
         List<String> colours1 = new ArrayList<>();
         colours1.add("blå");
         colours1.add("rød");

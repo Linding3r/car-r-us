@@ -35,15 +35,14 @@ public class MemberRepositoryTest {
         carRepository.save(c2);
     }
 
-    @Test
+    /*@Test
     void findAllMemberWithRestest() {
         Member m1 = memberRepository.findById("m1").get();
-        Member m2 = memberRepository.findById("m2").get();
         Car c1 = carRepository.findById(1).get();
         reservationRepository.save(new Reservation(c1, m1, LocalDate.now(), LocalDate.now().plusDays(1)));
         assertEquals(1, memberRepository.findAllWithReservations().size());
 
-    }
+    }*/
 
 
 

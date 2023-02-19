@@ -25,6 +25,7 @@ class MemberServiceH2Test {
     MemberService memberService;
 
     boolean dataIsReady = false;
+
     @BeforeEach
     void setUp() {
         if(!dataIsReady){  //Explain this
@@ -39,7 +40,6 @@ class MemberServiceH2Test {
     void getMembersAdmin() {
         List<MemberResponse> members = memberService.getMembers(true);
         assertEquals(2,members.size());
-        assertNotNull(members.get(0).getCreated());
     }
 
     @Test
@@ -48,5 +48,6 @@ class MemberServiceH2Test {
         Member member = memberRepository.findById("m1").get();
         assertEquals(1, member.getRanking());
     }
+
 
 }

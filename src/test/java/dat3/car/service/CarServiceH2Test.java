@@ -10,8 +10,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
 class CarServiceH2Test {
@@ -39,4 +38,5 @@ class CarServiceH2Test {
         assertEquals(2, carResponses.size());
         assertNotNull(carResponses.get(0).getCreated());
     }
+
 }

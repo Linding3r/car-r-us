@@ -49,7 +49,7 @@ class CarController {
     }
 
     @GetMapping("/{carBrand}/{carModel}")
-    CarResponse getCarByBrandAndModel(@PathVariable String carBrand, @PathVariable String carModel){
+    List<CarResponse> getCarsByBrandAndModel(@PathVariable String carBrand, @PathVariable String carModel){
         return carService.getCarByBrandAndModel(carBrand, carModel);
     }
 

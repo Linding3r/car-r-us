@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -56,9 +57,11 @@ public class CarService {
         return new CarResponse(car, false);
     }
 
-    public CarResponse getCarByBrandAndModel(String carBrand, String carModel) {
-        Car car = carRepository.getCarByBrandAndModel(carBrand, carModel);
-        return new CarResponse(car, false);
+    public List<CarResponse> getCarByBrandAndModel(String carBrand, String carModel) {
+        List<Car> car = carRepository.getCarByBrandAndModel(carBrand, carModel);
+        List<CarResponse> carResponses = car.stream()
+                .map(c -> new CarResponse(c, false)).toList();
+        return carResponses;
     }
 
     public Double getAveragePrice() {
@@ -68,7 +71,7 @@ public class CarService {
     }
 
     public List<CarResponse> getAvailableCars() {
-        List<Car> cars = carRepository.findAllWhereAvailable();
+        List<Car> cars = carRepository.findAllNotReserved();
         List<CarResponse> carResponses = cars.stream()
                 .map(car -> new CarResponse(car, false)).toList();
         return carResponses;

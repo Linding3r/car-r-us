@@ -28,6 +28,7 @@ public class ReservationService {
         this.memberRepository = memberRepository;
     }
 
+
     public List<ReservationResponse> getReservations() {
         List<Reservation> reservations = reservationRepository.findAll();
         return reservations.stream().map(ReservationResponse::new).toList();
@@ -40,18 +41,18 @@ public class ReservationService {
 
     public ReservationResponse makeReservation(ReservationRequest reservationRequest) {
         Car car = carRepository.findById(reservationRequest.getCarId()).orElseThrow(() ->
-                new ResponseStatusException(HttpStatus.BAD_REQUEST, "car with this id does not exist"));
+                new ResponseStatusException(HttpStatus.BAD_REQUEST, "invalid car id"));
 
         if (reservationRequest.getRentalDate().isBefore(LocalDate.now())) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid date");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "invalid date");
         }
 
         if (reservationRepository.existsByCarAndRentalDate(car, reservationRequest.getRentalDate())) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "A reservation with the given date and car is already made");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "given date and car is already reserved");
         }
 
         Member member = memberRepository.findById(reservationRequest.getUsername()).orElseThrow(() ->
-                new ResponseStatusException(HttpStatus.BAD_REQUEST, "member with this id does not exist"));
+                new ResponseStatusException(HttpStatus.BAD_REQUEST, "invalid username"));
 
         Reservation reservation = new Reservation(car, member, LocalDate.now(), reservationRequest.getRentalDate());
 
@@ -65,4 +66,5 @@ public class ReservationService {
         List<Reservation> reservations = reservationRepository.getReservationsByMember_Username(username);
         return reservations.stream().map(ReservationResponse::new).toList();
     }
+
 }

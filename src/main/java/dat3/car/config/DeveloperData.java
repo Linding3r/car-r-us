@@ -2,6 +2,7 @@ package dat3.car.config;
 
 import dat3.car.entity.Car;
 import dat3.car.entity.Member;
+import dat3.car.entity.Reservation;
 import dat3.car.repository.CarRepository;
 import dat3.car.repository.MemberRepository;
 import dat3.car.repository.ReservationRepository;
@@ -13,6 +14,7 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Controller;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -75,7 +77,11 @@ public class DeveloperData implements ApplicationRunner {
 
 
 
-     carRepository.saveAll(cars);
+        carRepository.saveAll(cars);
+
+
+        reservationRepository.save(new Reservation(cars.get(0), m1, LocalDate.now(), LocalDate.of(2021,03,05)));
+        reservationRepository.save(new Reservation(cars.get(1), m2, LocalDate.now(), LocalDate.of(2021,03,05)));
 
 
     }

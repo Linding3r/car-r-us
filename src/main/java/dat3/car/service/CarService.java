@@ -55,4 +55,22 @@ public class CarService {
         Car car = carRepository.getReferenceById(id);
         return new CarResponse(car, false);
     }
+
+    public CarResponse getCarByBrandAndModel(String carBrand, String carModel) {
+        Car car = carRepository.getCarByBrandAndModel(carBrand, carModel);
+        return new CarResponse(car, false);
+    }
+
+    public Double getAveragePrice() {
+        int carSum = carRepository.findAll().size();
+        double totalSum = carRepository.findAll().stream().mapToDouble(Car::getPricePrDay).sum();
+        return totalSum / carSum;
+    }
+
+    public List<CarResponse> getAvailableCars() {
+        List<Car> cars = carRepository.findAllWhereAvailable();
+        List<CarResponse> carResponses = cars.stream()
+                .map(car -> new CarResponse(car, false)).toList();
+        return carResponses;
+    }
 }

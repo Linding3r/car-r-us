@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -74,4 +75,6 @@ public class MemberService {
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "Member not found"));
         return new MemberResponse(member, false);
     }
+
+
 }

@@ -56,4 +56,5 @@ class MemberController {
     void deleteMemberByUsername(@PathVariable String username) {
         memberService.deleteMemberByUsername(username);
     }
+
 }

@@ -47,4 +47,19 @@ class CarController {
     void deleteCarById(@PathVariable int carId){
         carService.deleteCarById(carId);
     }
+
+    @GetMapping("/{carBrand}/{carModel}")
+    CarResponse getCarByBrandAndModel(@PathVariable String carBrand, @PathVariable String carModel){
+        return carService.getCarByBrandAndModel(carBrand, carModel);
+    }
+
+    @GetMapping("/average-price")
+    Double getAveragePrice(){
+        return carService.getAveragePrice();
+    }
+
+    @GetMapping("/available")
+    List<CarResponse> getAvailableCars(){
+        return carService.getAvailableCars();
+    }
 }

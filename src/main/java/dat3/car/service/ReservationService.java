@@ -61,6 +61,8 @@ public class ReservationService {
     }
 
 
-
-
+    public List<ReservationResponse> getReservationsByUsername(String username) {
+        List<Reservation> reservations = reservationRepository.getReservationsByMember_Username(username);
+        return reservations.stream().map(ReservationResponse::new).toList();
+    }
 }

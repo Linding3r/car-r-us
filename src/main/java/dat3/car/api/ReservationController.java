@@ -33,4 +33,9 @@ public class ReservationController {
     ReservationResponse createReservation(@RequestBody ReservationRequest body) {
         return reservationService.makeReservation(body);
     }
+
+    @GetMapping("/member/{username}")
+    List<ReservationResponse> getReservationsByUsername(@PathVariable String username){
+        return reservationService.getReservationsByUsername(username);
+    }
 }

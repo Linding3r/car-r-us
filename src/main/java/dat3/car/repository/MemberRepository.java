@@ -1,6 +1,7 @@
 package dat3.car.repository;
 
 import dat3.car.entity.Member;
+import dat3.car.entity.Reservation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -12,4 +13,6 @@ public interface MemberRepository extends JpaRepository<Member, String>{
 
     @Query("SELECT DISTINCT r.member FROM Reservation r")
     List<Member> findAllWithReservations();
+
+
 }

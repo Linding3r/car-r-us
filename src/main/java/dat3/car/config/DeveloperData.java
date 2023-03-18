@@ -48,6 +48,9 @@ public class DeveloperData implements ApplicationRunner {
         m1.setFavoriteCarColors(colours1);
         m2.setFavoriteCarColors(colours2);
 
+        m1.setRoles(List.of(Role.USER));
+        m2.setRoles(List.of(Role.ADMIN, Role.USER));
+
         Map<String, String> phonenumbers = new HashMap<>();
         phonenumbers.put("mobile","12345");
         phonenumbers.put("work", "45678");
@@ -58,7 +61,7 @@ public class DeveloperData implements ApplicationRunner {
 
         memberRepository.save(m1);
         memberRepository.save(m2);
-
+          
 
         List<Car> cars = new ArrayList<>();
         cars.add(new Car("Volvo", "CX90", 895, 10));

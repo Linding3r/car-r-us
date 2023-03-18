@@ -15,7 +15,7 @@ import java.time.LocalDate;
 public class ReservationResponse {
 
     private int id;
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate reservationDate;
     private int carId;
     private String carBrand;

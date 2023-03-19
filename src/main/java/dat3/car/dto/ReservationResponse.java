@@ -17,6 +17,8 @@ public class ReservationResponse {
     private int id;
     @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate reservationDate;
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    private LocalDate rentalDate;
     private int carId;
     private String carBrand;
     private String carModel;
@@ -26,6 +28,7 @@ public class ReservationResponse {
 
     public ReservationResponse(Reservation r) {
         this.reservationDate = r.getReservationDate();
+        this.rentalDate = r.getRentalDate();
         this.carId = r.getCar().getId();
         this.id = r.getId();
         this.carBrand = r.getCar().getBrand();
